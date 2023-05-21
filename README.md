@@ -1,6 +1,15 @@
 # gerenciamentoClientes
 Projeto da disciplina de gerencia de projetos de ADS no IFRS
 
+# Script para subir banco de dados no docker
+
+1 - Certifique-se de ter o Docker instalado.
+2 - Abra o cmd diretamente na pasta raiz do projeto e rode o seguinte comando:
+
+docker-compose up -d
+
+Este comando inicializará uma imagem do MySql em um container
+
 # Scrip para criação do banco de dados
 
 create schema gerenciamentoClientes;
@@ -15,4 +24,6 @@ CREATE TABLE `representante` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-)
+);
+
+

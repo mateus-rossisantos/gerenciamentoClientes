@@ -1,16 +1,19 @@
 <?php
-define("SERVER", "localhost");
-define("USER", "root");
-define("PASSWORD", "root");
-define("DB", "gerenciamentoClientes");
-
 function cria_conexao()
 {
+    $host = 'localhost';
+    $port = '3306';
+    $database = 'gerenciamentoClientes';
+    $username = 'root';
+    $password = 'root';
+
     try {
-        $conexao = new PDO("mysql:host=" . SERVER . ";dbname=" . DB, USER, PASSWORD);
-        echo ("Conectado");
-        return $conexao;
+        $dsn = "mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4";
+        $pdo = new PDO($dsn, $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Conexão com o banco de dados estabelecida com sucesso!";
+        return $pdo;
     } catch (PDOException $e) {
-        print("Error: " . $e->getMessage());
+        echo "Erro na conexão com o banco de dados: " . $e->getMessage();
     }
 }

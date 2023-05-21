@@ -3,7 +3,8 @@
 require_once 'conexao.php';
 
 
-function lista_representante(){
+function lista_representante()
+{
     $conexao = cria_conexao();
 
     $sql = "SELECT * FROM representante";
@@ -16,7 +17,8 @@ function lista_representante(){
 }
 
 
-function busca_representante_por_nome($nome){
+function busca_representante_por_nome($nome)
+{
     $conexao = cria_conexao();
 
     $sql = "SELECT * FROM representante WHERE name = :name";
@@ -27,10 +29,8 @@ function busca_representante_por_nome($nome){
 
     $stmt->execute();
 
-    
     $representante = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    
     return array_shift($representante);
 }
 
@@ -45,7 +45,7 @@ function insere_representante($name, $email, $password)
 
         $stmt = $conexao->prepare($sql);
 
-        $stmt->bindValue(':nome', $name);
+        $stmt->bindValue(':name', $name);
         $stmt->bindValue(':email', $email);
         $stmt->bindValue(':password', $password);
 
