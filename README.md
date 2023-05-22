@@ -30,3 +30,5 @@ password varchar(100) NOT NULL,
 PRIMARY KEY (id),
 UNIQUE KEY id (id)
 );
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
