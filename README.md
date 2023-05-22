@@ -11,11 +11,9 @@ docker-compose up -d
 
 Este comando inicializará uma imagem do MySql em um container
 
-## Scrip para criação do banco de dados
+## Script para criação do banco de dados
 
-create schema gerenciamentoClientes;
-
-use gerenciamentoClientes;
+use gerenciamentoclientes;
 
 CREATE TABLE representante (
 id bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -31,4 +29,4 @@ PRIMARY KEY (id),
 UNIQUE KEY id (id)
 );
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'gerenciamentoclientes'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
