@@ -35,18 +35,22 @@ function busca_representante_por_nome($nome)
 }
 
 
-function insere_representante($name, $email, $password)
+function insere_representante($name, $endereco, $telefone, $email, $documento, $estado, $password)
 {
     try {
         $conexao = cria_conexao();
 
-        $sql = "INSERT INTO representante (name, email, password) 
-                    VALUES (:name, :email, :password)";
+        $sql = "INSERT INTO representante (name, endereco, telefone, email, documento, estado, password) 
+                    VALUES (:name, :endereco, :telefone, :email, :documento, :estado,:password)";
 
         $stmt = $conexao->prepare($sql);
 
         $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':endereco', $endereco);
+        $stmt->bindValue(':telefone', $telefone);
         $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':documento', $documento);
+        $stmt->bindValue(':estado', $estado);
         $stmt->bindValue(':password', $password);
 
         $stmt->execute();
