@@ -1,21 +1,21 @@
 <?php
 
-require_once 'representanteDao.php';
+require_once 'dao/representanteDao.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['username'];
-    $endereco = $_POST['endereco'];
-    $telefone = $_POST['telefone'];
+    $address = $_POST['endereco'];
+    $fone = $_POST['telefone'];
     $email = $_POST['email'];
-    $documento = $_POST['CPFCNPJ'];
-    $estado = $_POST['uf'];
+    $document = $_POST['CPFCNPJ'];
+    $state = $_POST['uf'];
     $password = $_POST['password'];
 
-    insere_representante($name, $endereco, $telefone, $email, $documento, $estado, $password);
+    insere_representante($name, $address, $fone, $email, $document, $state, $password);
 
     echo "Representante cadastrado com sucesso!";
 
-    header("Location: tela_login.html");
+    header("Location: views/cadastro_realizado.php");
     exit;
 }

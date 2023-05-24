@@ -3,9 +3,9 @@ function cria_conexao()
 {
     $host = 'localhost';
     $port = '3306';
-    $database = 'gerenciamentoClientes';
+    $database = 'gerenciamento';
     $username = 'root';
-    $password = 'root';
+    $password = '';
 
     try {
         $dsn = "mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4";

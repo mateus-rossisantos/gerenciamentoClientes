@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <link rel="stylesheet" type="text/css" href="cadastro_rep.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cadastro_rep.css">
     <title>Tela Login</title>
 </head>
 <body>
   <div class="principal">
     <div class="container">
      <h2>Cadastro de Representante:</h2>
-       <form action="cadastrar_representante.php" method="post">
+       <form action="../cadastrar_representante.php" method="post">
         <label for="username">Nome:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="username" required="required">
 
         <label for="endereco">Endereço:</label>
         <input type="text" id="endereco" name="endereco">
@@ -23,10 +23,10 @@
         <input type="text" id="telefone" name="telefone">
 
         <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required="required">
 
         <label for="CPFCNPJ">CPF/CNPJ:</label>
-        <input type="text" id="CPFCNPJ" name="CPFCNPJ">
+        <input type="text" id="CPFCNPJ" name="CPFCNPJ" required="required">
 
         <label for="regioes">Regiões:</label>
         <select id="uf" name="uf" required>
@@ -61,7 +61,7 @@
         </select>
 
         <label for="password">Senha:</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="password" required="required">
 
        <input type="submit" value="Cadastrar">
       </form>
