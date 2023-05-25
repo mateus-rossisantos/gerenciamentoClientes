@@ -1,10 +1,10 @@
 <?php
 function cria_conexao()
 {
-    $host = 'localhost';
-    $port = '3306';
-    $database = 'gerenciamento';
-    $username = 'root';
+    $host = 'projetos.farroupilha.ifrs.edu.br';
+    $port = '35003';
+    $database = 'gerenciamentoclientes';
+    $username = 'gerenciamentoclientes';
     $password = '';
 
     try {

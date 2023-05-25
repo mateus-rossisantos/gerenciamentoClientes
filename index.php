@@ -1,29 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" type="text/css" href="assets/css/tela_login.css">
-    <title>Tela Login</title>
+    <title>Página Home</title>
 </head>
+
 <body>
-    <div class="principal">
-        <div class="container">
-            <h2>Login</h2>
-            <form>
-                <label for="username">Usuário:</label>
-                <input type="text" id="username" name="username">
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password">
-                <input type="submit" value="Entrar">
-                <a href="tela_recuperar_senha">Recuperar senha</a>
-                <br><br>
-                <a href="views/cadastro_rep.php">Cadastrar representante</a>
-            </form>
-        </div>
-    </div>
+    <h1>Bem-vindo à Página Home</h1>
+
+    <?php
+    // Verifique se o representante está autenticado e se as informações estão disponíveis na sessão
+    session_start();
+    if (isset($_SESSION['representante_id']) && isset($_SESSION['representante_name']) && isset($_SESSION['representante_status']) && isset($_SESSION['representante_email'])) {
+        $representanteId = $_SESSION['representante_id'];
+        $representanteName = $_SESSION['representante_name'];
+        $representanteStatus = $_SESSION['representante_status'];
+        $representanteEmail = $_SESSION['representante_email'];
+
+        echo "<p>ID do Representante: $representanteId</p>";
+        echo "<p>Nome do Representante: $representanteName</p>";
+        echo "<p>Status do Representante: $representanteStatus</p>";
+        echo "<p>Email do Representante: $representanteEmail</p>";
+    } else {
+        // O representante não está autenticado, redirecione para a tela de login
+        header('Location: login.php');
+        exit;
+    }
+    ?>
+
+    <!-- Aqui você pode adicionar o conteúdo da página home -->
+    <!-- ... -->
+
+    <a href="logout.php">Sair</a> <!-- Link para a página de logout -->
+
 </body>
 
 </html>

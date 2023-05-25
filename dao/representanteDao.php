@@ -34,24 +34,43 @@ function busca_representante_por_nome($name)
     return array_shift($representante);
 }
 
+function busca_representante_por_email($email)
+{
+    $conexao = cria_conexao();
 
-function insere_representante($name, $address, $fone, $email, $document, $state, $password)
+    $sql = "SELECT * FROM representante WHERE email = :email";
+
+    $stmt = $conexao->prepare($sql);
+
+    $stmt->bindValue(':email', $email);
+
+    $stmt->execute();
+
+    $representante = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return array_shift($representante);
+}
+
+
+function insere_representante($name, $address, $phone, $email, $document, $state, $password)
 {
     try {
         $conexao = cria_conexao();
 
-        $sql = "INSERT INTO representante (name, address, fone, email, document, state, password) 
-                    VALUES (:name, :address, :fone, :email, :document, :state, :pass)";
+        $passwordEncriptado = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO representante (name, address, phone, email, document, state, password) 
+                    VALUES (:name, :address, :phone, :email, :document, :state, :password)";
 
         $stmt = $conexao->prepare($sql);
 
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':address', $address);
-        $stmt->bindValue(':fone', $fone);
+        $stmt->bindValue(':phone', $phone);
         $stmt->bindValue(':email', $email);
         $stmt->bindValue(':document', $document);
         $stmt->bindValue(':state', $state);
-        $stmt->bindValue(':pass', $password);
+        $stmt->bindValue(':password', $passwordEncriptado);
 
         $stmt->execute();
 

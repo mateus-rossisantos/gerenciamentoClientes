@@ -18,15 +18,19 @@ use gerenciamentoclientes;
 CREATE TABLE representante (
 id bigint unsigned NOT NULL AUTO_INCREMENT,
 name varchar(100) NOT NULL,
-endereco varchar(250),
-telefone varchar(15),
+address varchar(250),
+phone varchar(15),
 email varchar(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
-documento varchar(14),
-estado varchar(2),
+document varchar(14),
+state varchar(2),
 status int DEFAULT 0,
 password varchar(100) NOT NULL,
 PRIMARY KEY (id),
 UNIQUE KEY id (id)
 );
+
+para tornar algum usuário o adm, rodar o seguinte script
+UPDATE representante SET status = 2 WHERE id = :id;
+
 
 ALTER USER 'gerenciamentoclientes'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
