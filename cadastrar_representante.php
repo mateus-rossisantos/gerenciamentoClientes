@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $_POST['endereco'];
     $fone = $_POST['telefone'];
     $email = $_POST['email'];
-    $document = $_POST['CPFCNPJ'];
+    $document = $_POST['campoDocumento'];
     $state = $_POST['uf'];
     $password = $_POST['password'];
 

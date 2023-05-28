@@ -1,5 +1,6 @@
 window.onload = function() {
     validatePassword('password', 'password-confirm');
+    showField();
 }
 
 function validatePassword(idPass1, idPass2) {
@@ -46,13 +47,13 @@ function formatPhone(phone) {
   
     return phone;
 }
-  
 
 // analisa o campo do CPF e do CNPJ
 function showField() {
-    const cpfRadio = document.getElementById("cpf");
-    const cnpjRadio = document.getElementById("cnpj");
-    const campoDocumento = document.getElementById("campoDocumento");
+    const cpfRadio = document.getElementById('cpf');
+    const cnpjRadio = document.getElementById('cnpj');
+    const campoDocumento = document.getElementById('campoDocumento');
+    campoDocumento.setAttribute('disabled', 'disabled');
 
     if (cpfRadio.checked) {
         campoDocumento.removeAttribute("disabled");
@@ -85,9 +86,7 @@ function showField() {
                 campoDocumento.setCustomValidity('');
             }
         });
-
     } 
-
 }
 
 

@@ -30,8 +30,7 @@
           <label for="cnpj" class="required-label-cpf">CNPJ</label>
           <input type="radio" id="cnpj" name="tipoDocumento" value="cnpj" onchange="showField()">
         </div>
-        <!-- <label for="campoDocumento"></label> -->
-        <input type="text" id="campoDocumento" class="campo-invisivel" required disabled>
+        <input type="text" id="campoDocumento" class="campo-invisivel" value="" name="campoDocumento">
 
         <label for="regioes">Regiões:</label>
         <select id="uf" name="uf" required>
