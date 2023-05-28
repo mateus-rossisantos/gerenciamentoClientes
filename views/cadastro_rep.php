@@ -14,16 +14,16 @@
     <h2>Cadastro de Representante:</h2>
       <form action="../cadastrar_representante.php" method="post">
         <label for="username" class="required-label">Nome:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="username" name="username" required placeholder='Insira o nome completo'>
 
         <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" name="endereco">
+        <input type="text" id="endereco" name="endereco" placeholder='Digite seu endereço'>
 
         <label for="telefone">Telefone:</label>
-        <input type="text" id="telefone" name="telefone">
+        <input type="text" id="telefone" name="telefone" placeholder='Insira o número de telefone com DDD'>
 
         <label for="email" class="required-label">E-mail:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required placeholder='Insira seu melhor email'>
         <div class="cpf-or-cnpj-radios">
           <label for="cpf">CPF</label>
           <input type="radio" id="cpf" name="tipoDocumento" value="cpf" required onchange="showField()"> 

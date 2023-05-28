@@ -21,6 +21,33 @@ function validatePassword(idPass1, idPass2) {
     });
 }
 
+
+const phoneInput = document.getElementById('telefone');
+phoneInput.addEventListener('input', function() {
+    const phone = phoneInput.value;
+    const telefoneFormatado = formatPhone(phone);
+    
+    phoneInput.value = telefoneFormatado;
+});
+
+// formatação do telefone
+function formatPhone(phone) {
+    // Remove caracteres não numéricos
+    phone = phone.replace(/\D/g, '');
+  
+    // Verifica o tamanho do número de telefone
+    var phoneLength = phone.length;
+    
+    if (phoneLength === 11) {
+        phone = phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    } else if (phoneLength === 10) {
+        phone = phone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    }
+  
+    return phone;
+}
+  
+
 // analisa o campo do CPF e do CNPJ
 function showField() {
     const cpfRadio = document.getElementById("cpf");
