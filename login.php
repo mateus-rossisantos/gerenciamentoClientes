@@ -21,7 +21,7 @@
                 <label for="password">Senha:</label>
                 <input type="password" id="password" name="password" placeholder="Digite sua senha">
                 <input type="submit" value="Entrar">
-                <a href="tela_recuperar_senha">Recuperar senha</a>
+                <a href="tela_recupera_senha.html">Recuperar senha</a>
                 <br><br>
                 <a href="views/cadastro_rep.php">Cadastrar representante</a>
             </form>

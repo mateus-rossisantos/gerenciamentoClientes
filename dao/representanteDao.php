@@ -80,6 +80,49 @@ function insere_representante($name, $address, $phone, $email, $document, $state
     }
 }
 
+function testa_cpf($document){
+
+    $conexao = cria_Conexao();
+
+    $array = array();
+
+    $sql = "SELECT document FROM representante WHERE document = :document";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindValue(":document", $document);
+    $stmt->execute();
+
+    IF($stmt->rowCount() > 0){
+        $array = $stmt->fetch();
+    }
+
+    return $array;
+
+}
+
+function atualiza_senha($document,$password){
+   
+    try {
+        $conexao = cria_Conexao();
+
+        $passwordEncriptado = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "UPDATE representante SET password=?  WHERE document =?";
+
+        $stmt = $conexao->prepare($sql);
+
+        $stmt->execute([$passwordEncriptado,$document]);
+
+        $conexao = null;
+
+        return true;
+
+    } catch (PDOException $e) {
+        print($e->getMessage()); die();
+    }
+    
+}
+
 // function atualiza_aluno($id, $nome, $matricula)
 // {
 //     try {
