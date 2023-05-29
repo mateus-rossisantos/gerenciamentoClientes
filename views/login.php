@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/tela_login.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/tela_login.css">
     <title>Tela Login</title>
 </head>
 
@@ -15,7 +15,7 @@
     <div class="principal">
         <div class="container">
             <h2>Login</h2>
-            <form action="verify_login.php" method="post">
+            <form action="../verify_login.php" method="post">
                 <label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
                 <label for="password">Senha:</label>
@@ -23,7 +23,7 @@
                 <input type="submit" value="Entrar">
                 <a href="tela_recupera_senha.html">Recuperar senha</a>
                 <br><br>
-                <a href="views/cadastro_rep.php">Cadastrar representante</a>
+                <a href="cadastro_rep.php">Cadastrar representante</a>
             </form>
         </div>
     </div>

@@ -6,7 +6,7 @@ require_once 'dao/representanteDao.php';
 function exibirMensagemErro($mensagem)
 {
     // Redirecione o usuário de volta para a tela de login
-    header('Location: login.php?erro=' . urlencode($mensagem));
+    header('Location: views/login.php?erro=' . urlencode($mensagem));
     exit; // Encerre o script para evitar execução adicional indesejada
 }
 

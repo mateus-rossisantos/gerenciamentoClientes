@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    if (testa_cpf($document)) {
 
       echo "<script language='javascript' type='text/javascript'>
-      window.location.href='tela_nova_senha.php';</script>";
+      window.location.href='views/tela_nova_senha.php';</script>";
    } else {
       echo "<script language='javascript' type='text/javascript'>
       alert('CPF não encontrado!');window.location
-      .href='tela_recupera_senha.html';</script>";
+      .href='views/tela_recupera_senha.html';</script>";
    }
 }

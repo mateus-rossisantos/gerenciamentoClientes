@@ -24,7 +24,7 @@
         echo "<p>Email do Representante: $representanteEmail</p>";
     } else {
         // O representante não está autenticado, redirecione para a tela de login
-        header('Location: login.php');
+        header('Location: views/login.php');
         exit;
     }
     ?>
