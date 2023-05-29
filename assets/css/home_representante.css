@@ -1,0 +1,58 @@
+/*.menu{
+    width: 200px;
+}
+    li a {
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+    
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    background-color:azure;
+}
+
+
+li a:hover {
+    background-color:#555;
+    color: white;
+}*/
+.menu {
+    width: 200px;
+    float: left;
+    background-color: #f1f1f1;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.menu li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Estilos para as seções na mesma página */
+.content {
+    margin-left: 220px; /* Espaço para o menu à esquerda */
+    width: 1000px;
+ 
+}
+
+.section {
+    margin-bottom: 50px;
+}
