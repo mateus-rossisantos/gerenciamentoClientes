@@ -80,7 +80,8 @@ function insere_representante($name, $address, $phone, $email, $document, $state
     }
 }
 
-function testa_cpf($document){
+function testa_cpf($document)
+{
 
     $conexao = cria_Conexao();
 
@@ -92,16 +93,16 @@ function testa_cpf($document){
     $stmt->bindValue(":document", $document);
     $stmt->execute();
 
-    IF($stmt->rowCount() > 0){
+    if ($stmt->rowCount() > 0) {
         $array = $stmt->fetch();
     }
 
     return $array;
-
 }
 
-function atualiza_senha($document,$password){
-   
+function atualiza_senha($document, $password)
+{
+
     try {
         $conexao = cria_Conexao();
 
@@ -111,16 +112,15 @@ function atualiza_senha($document,$password){
 
         $stmt = $conexao->prepare($sql);
 
-        $stmt->execute([$passwordEncriptado,$document]);
+        $stmt->execute([$passwordEncriptado, $document]);
 
         $conexao = null;
 
         return true;
-
     } catch (PDOException $e) {
-        print($e->getMessage()); die();
+        print($e->getMessage());
+        die();
     }
-    
 }
 
 // function atualiza_aluno($id, $nome, $matricula)

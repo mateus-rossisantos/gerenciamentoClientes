@@ -3,19 +3,18 @@
 require_once 'dao/representanteDao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $document = $_POST['CPFCNPJ'];
+   $document = $_POST['CPFCNPJ'];
 
-    if(testa_cpf($document)){
+   session_start();
+   $_SESSION['CPFCNPJ'] = $document;
 
-       echo"<script language='javascript' type='text/javascript'>
-       alert('CPF encontrado!');window.location
-       .href='tela_nova_senha.php';</script>";
+   if (testa_cpf($document)) {
 
-    }else{
-
-       echo"<script language='javascript' type='text/javascript'>
-       alert('CPF não encontrado!');window.location
-       .href='login.php';</script>";
-
-    }
+      echo "<script language='javascript' type='text/javascript'>
+      window.location.href='tela_nova_senha.php';</script>";
+   } else {
+      echo "<script language='javascript' type='text/javascript'>
+      alert('CPF não encontrado!');window.location
+      .href='tela_recupera_senha.html';</script>";
+   }
 }
