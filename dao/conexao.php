@@ -5,7 +5,7 @@ function cria_conexao()
     $port = '35003';
     $database = 'gerenciamentoclientes';
     $username = 'gerenciamentoclientes';
-    $password = '123456';
+    $password = '';
 
     try {
         $dsn = "mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4";

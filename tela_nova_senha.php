@@ -14,16 +14,16 @@
      <h2>Nova Senha</h2>
        <form action="altera_senha.php" method="post">
         <label for="password">Nova Senha:</label>
-        <input type="password" placeholder="Senha" id="password" name="password" required>
+        <input type="password" placeholder="Senha" id="password" name="password" required minlength="5">
         <br>
         <label for="password">Confirmar Nova Senha:</label>
-        <input type="password" placeholder="Confirme Senha" id="confirm_password" required>
+        <input type="password" placeholder="Confirme Senha" id="confirm_password" required minlength="5">
       
        <input type="submit" value="Alterar">
 
       </form>
   </div>
 </div>
-<script src="./js/master.js"></script>
+<script src="assets/js/master.js"></script>
 </body>
 </html>
