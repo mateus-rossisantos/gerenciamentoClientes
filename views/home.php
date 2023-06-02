@@ -27,7 +27,7 @@
         <div class="user-links">
             <a href="#" class="mr-2">Meu perfil</a>
             <a class="mr-2">|</a>
-            <a href="#">Sair</a>
+            <a href="../logout.php">Sair</a>
         </div>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
