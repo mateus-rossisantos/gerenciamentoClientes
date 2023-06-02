@@ -1,5 +1,6 @@
 body {
     margin: 2% 10% 10% 10%;
+    background-color: azure;
 }
 .user-links {
     display: flex;
