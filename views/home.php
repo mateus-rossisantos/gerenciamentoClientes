@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/user_home.css">
+    <script src="altera_status.js"></script>
     <title>Home</title>
 </head>
 
@@ -37,15 +39,15 @@
                 <button class="btn btn-primary mr-2">Representantes</button>
                 <button class="btn btn-primary">Clientes</button>
             </div>
-            
+
             <!-- campo de busca -->
             <form class="form-inline">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Pesquisar">
                     <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+                        <button class="btn btn-outline-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -66,12 +68,24 @@
             <tbody>
                 <?php foreach ($representantes as $value) : ?>
                     <tr>
-                        <td><?= $value['name']?></td>
-                        <td><?= $value['email']?></td>
-                        <td><?= $value['phone']?></td>
-                        <td><?= $value['state']?></td>
-                        <td><?= $value['status']?></td>
-                        <td> 
+                        <td><?= $value['name'] ?></td>
+                        <td><?= $value['email'] ?></td>
+                        <td><?= $value['phone'] ?></td>
+                        <td><?= $value['state'] ?></td>
+                        <td>
+                            <select onchange="atualizarStatus(this.value, <?= $value['id'] ?>)">
+                                <option value="0" <?php if ($value['status'] == 0) {
+                                                        echo 'selected';
+                                                    } ?>>Inativo</option>
+                                <option value="1" <?php if ($value['status'] == 1) {
+                                                        echo 'selected';
+                                                    } ?>>Ativo</option>
+                                <option value="2" <?php if ($value['status'] == 2) {
+                                                        echo 'selected';
+                                                    } ?>>Adm</option>
+                            </select>
+                        </td>
+                        <td>
                             <button type="button" class="btn btn-info btn-sm">
                                 <i class="fas fa-edit"></i> Editar
                             </button>
@@ -103,3 +117,32 @@
 </body>
 
 </html>
+
+<script>
+    function atualizarStatus(novoStatus, representanteId) {
+        // Crie um formulário para enviar a requisição
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '../atualizar_status.php'; // Altere para o arquivo que irá processar a requisição
+
+        // Crie um campo de input para o novo status
+        const statusInput = document.createElement('input');
+        statusInput.type = 'hidden';
+        statusInput.name = 'status';
+        statusInput.value = novoStatus;
+
+        // Crie um campo de input para o ID do representante
+        const representanteIdInput = document.createElement('input');
+        representanteIdInput.type = 'hidden';
+        representanteIdInput.name = 'id';
+        representanteIdInput.value = representanteId;
+
+        // Adicione os campos de input ao formulário
+        form.appendChild(statusInput);
+        form.appendChild(representanteIdInput);
+
+        // Adicione o formulário à página e envie a requisição
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
