@@ -35,7 +35,6 @@
                 <img src="../assets/img/vineicon.jpeg" alt="vine image" class="mr-2">
             </div>
             <div>
-                <button class="btn btn-primary mr-2">Representantes</button>
                 <button class="btn btn-primary">Clientes</button>
             </div>
 
@@ -59,7 +58,6 @@
                     <th scope="col">Email</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Excluir</th>
                 </tr>
@@ -71,19 +69,6 @@
                         <td><?= $value['email'] ?></td>
                         <td><?= $value['phone'] ?></td>
                         <td><?= $value['state'] ?></td>
-                        <td>
-                            <select onchange="atualizarStatus(this.value, <?= $value['id'] ?>)">
-                                <option value="0" <?php if ($value['status'] == 0) {
-                                                        echo 'selected';
-                                                    } ?>>Inativo</option>
-                                <option value="1" <?php if ($value['status'] == 1) {
-                                                        echo 'selected';
-                                                    } ?>>Ativo</option>
-                                <option value="2" <?php if ($value['status'] == 2) {
-                                                        echo 'selected';
-                                                    } ?>>Adm</option>
-                            </select>
-                        </td>
                         <td>
                             <button type="button" class="btn btn-info btn-sm">
                                 <i class="fas fa-edit"></i> Editar
@@ -116,32 +101,3 @@
 </body>
 
 </html>
-
-<script>
-    function atualizarStatus(novoStatus, representanteId) {
-        // Crie um formulário para enviar a requisição
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '../atualizar_status.php'; // Altere para o arquivo que irá processar a requisição
-
-        // Crie um campo de input para o novo status
-        const statusInput = document.createElement('input');
-        statusInput.type = 'hidden';
-        statusInput.name = 'status';
-        statusInput.value = novoStatus;
-
-        // Crie um campo de input para o ID do representante
-        const representanteIdInput = document.createElement('input');
-        representanteIdInput.type = 'hidden';
-        representanteIdInput.name = 'id';
-        representanteIdInput.value = representanteId;
-
-        // Adicione os campos de input ao formulário
-        form.appendChild(statusInput);
-        form.appendChild(representanteIdInput);
-
-        // Adicione o formulário à página e envie a requisição
-        document.body.appendChild(form);
-        form.submit();
-    }
-</script>
