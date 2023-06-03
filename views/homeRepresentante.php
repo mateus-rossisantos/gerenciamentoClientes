@@ -35,7 +35,6 @@
                 <img src="../assets/img/vineicon.jpeg" alt="vine image" class="mr-2">
             </div>
             <div>
-                <button class="btn btn-primary mr-2">Representantes</button>
                 <button class="btn btn-primary">Clientes</button>
             </div>
 
@@ -59,7 +58,6 @@
                     <th scope="col">Email</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Excluir</th>
                 </tr>
@@ -71,19 +69,6 @@
                         <td><?= $value['email'] ?></td>
                         <td><?= $value['phone'] ?></td>
                         <td><?= $value['state'] ?></td>
-                        <td>
-                            <select onchange="atualizarStatus(this.value, <?= $value['id'] ?>)">
-                                <option value="0" <?php if ($value['status'] == 0) {
-                                                        echo 'selected';
-                                                    } ?>>Inativo</option>
-                                <option value="1" <?php if ($value['status'] == 1) {
-                                                        echo 'selected';
-                                                    } ?>>Ativo</option>
-                                <option value="2" <?php if ($value['status'] == 2) {
-                                                        echo 'selected';
-                                                    } ?>>Adm</option>
-                            </select>
-                        </td>
                         <td>
                             <button type="button" class="btn btn-info btn-sm">
                                 <i class="fas fa-edit"></i> Editar
@@ -112,8 +97,6 @@
         exit;
     }
     ?>
-
-    <script src="../assets/js/update_status.js"></script>
 
 </body>
 

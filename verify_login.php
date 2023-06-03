@@ -27,7 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['representante_email'] = $logged_user['email'];
 
             // Redirecione para a página "index.php"
-            header('Location: views/home.php');
+            if($logged_user['status'] == 2) {
+                header('Location: views/home.php');
+            } else {
+                header('Location: views/homeRepresentante.php');
+            }
             exit;
         } else {
             // Senha incorreta
