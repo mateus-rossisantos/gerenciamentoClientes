@@ -123,6 +123,27 @@ function atualiza_senha($document, $password)
     }
 }
 
+function atualiza_status($id, $status)
+{
+
+    try {
+        $conexao = cria_Conexao();
+
+        $sql = "UPDATE representante SET status=?  WHERE id =?";
+
+        $stmt = $conexao->prepare($sql);
+
+        $stmt->execute([$status, $id]);
+
+        $conexao = null;
+
+        return true;
+    } catch (PDOException $e) {
+        print($e->getMessage());
+        die();
+    }
+}
+
 // function atualiza_aluno($id, $nome, $matricula)
 // {
 //     try {
