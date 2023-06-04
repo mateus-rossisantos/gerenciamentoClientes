@@ -100,6 +100,27 @@ function testa_cpf($document)
     return $array;
 }
 
+function testa_telefone($telefone,$document)
+{
+
+    $conexao = cria_Conexao();
+
+    $array = array();
+
+    $sql = "SELECT phone,document FROM representante WHERE phone = :phone AND document = :document";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindValue(":phone", $telefone);
+    $stmt->bindValue(":document", $document);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        $array = $stmt->fetch();
+    }
+
+    return $array;
+}
+
 function atualiza_senha($document, $password)
 {
 

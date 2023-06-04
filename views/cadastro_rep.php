@@ -19,8 +19,8 @@
         <label for="endereco">Endereço:</label>
         <input type="text" id="endereco" name="endereco" placeholder='Digite seu endereço'>
 
-        <label for="telefone">Telefone:</label>
-        <input type="text" id="telefone" name="telefone" placeholder='Insira o número de telefone com DDD'>
+        <label for="telefone" class="required-label">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" required placeholder='Insira o número de telefone com DDD'>
 
         <label for="email" class="required-label">E-mail:</label>
         <input type="email" id="email" name="email" required placeholder='Insira seu melhor email'>
