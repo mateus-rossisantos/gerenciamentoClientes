@@ -27,7 +27,7 @@
         <!-- conteúdo que está acima da tabela -->
         <div class="user-links">
             <div id="hello">
-                <h2>Olá <?=$representanteName?>, seja bem vindo a sua área!</h2>
+                <h2>Olá <?=$representanteName?>, seja bem vindo a área administrativa!</h2>
             </div>
             <div id="links">
                 <a href="#" class="mr-2">Meu perfil</a>
