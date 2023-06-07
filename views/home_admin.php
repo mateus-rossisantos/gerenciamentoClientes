@@ -66,7 +66,7 @@
                     <th scope="col">Estado</th>
                     <th scope="col">Status</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
+                    <!-- <th scope="col">Excluir</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -94,11 +94,11 @@
                                 <i class="fas fa-edit"></i> Editar
                             </button>
                         </td>
-                        <td>
+                        <!-- <td>
                             <button type="button" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i> Excluir
                             </button>
-                        </td>
+                        </td> -->
                     </tr>
                 <?php endforeach ?>
             </tbody>
