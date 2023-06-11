@@ -265,3 +265,8 @@ function calc_digitos_posicoes( digitos, posicoes = 10, soma_digitos = 0 ) {
     return cpf;
     
 } // calc_digitos_posicoes
+
+function tela_edita_rep() {
+    
+    window.location.href='../views/tela_edita_rep.php';
+}
