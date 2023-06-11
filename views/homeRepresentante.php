@@ -70,7 +70,7 @@
                         <td><?= $value['phone'] ?></td>
                         <td><?= $value['state'] ?></td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm">
+                            <button type="button" class="btn btn-info btn-sm" onclick = tela_edita_cliente();> <!-- Ainda não foi implementada -->
                                 <i class="fas fa-edit"></i> Editar
                             </button>
                         </td>
@@ -99,5 +99,5 @@
     ?>
 
 </body>
-
+<script src="../assets/js/cadastro_representante.js"></script>
 </html>

@@ -71,6 +71,9 @@
                         <td><?= $value['email'] ?></td>
                         <td><?= $value['phone'] ?></td>
                         <td><?= $value['state'] ?></td>
+
+                        <?$_SESSION['id'] = $value['id'];?>
+
                         <td>
                             <select onchange="atualizarStatus(this.value, <?= $value['id'] ?>)">
                                 <option value="0" <?php if ($value['status'] == 0) {
@@ -85,7 +88,7 @@
                             </select>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm">
+                            <button type="button" class="btn btn-info btn-sm"  onclick = tela_edita_rep();>
                                 <i class="fas fa-edit"></i> Editar
                             </button>
                         </td>
@@ -112,9 +115,9 @@
         exit;
     }
     ?>
-
+    
     <script src="../assets/js/update_status.js"></script>
-
+    <script src="../assets/js/cadastro_representante.js"></script>
 </body>
 
 </html>
