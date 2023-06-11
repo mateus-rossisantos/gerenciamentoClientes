@@ -14,7 +14,7 @@
     session_start();
     if (isset($_SESSION['representante_id']) && isset($_SESSION['representante_name']) && isset($_SESSION['representante_status']) && isset($_SESSION['representante_email'])) {
         if ($_SESSION['representante_status'] == 2) {
-            header('Location: views/home.php');
+            header('Location: views/home_admin.php');
         } else {
             header('Location: views/homeRepresentante.php');
         }
