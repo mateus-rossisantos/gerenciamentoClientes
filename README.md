@@ -34,3 +34,4 @@ UPDATE representante SET status = 2 WHERE id = :id;
 
 
 ALTER USER 'gerenciamentoclientes'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+testando alteração 
