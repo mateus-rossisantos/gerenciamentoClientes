@@ -85,7 +85,7 @@ if (isset($_GET['userid'])) {
         <input type="password" id="password" value="<?php echo $senha; ?>" placeholder="" name="password"  minlength="5">
         <input type="password" id="password-confirm"  value="<?php echo $senha; ?>" placeholder="" name="password"  minlength="5">
         <br>
-       <input type="submit" value="Editar">
+       <input type="submit" value="Salvar">
       </form>
     </div>
   </div>
