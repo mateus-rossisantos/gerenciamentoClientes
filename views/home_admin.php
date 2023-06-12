@@ -93,7 +93,7 @@
                             </select>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm"  onclick = tela_edita_rep();>
+                            <button type="button" class="btn btn-info btn-sm" onclick="location.href='tela_edita_rep.php?userid=<?= $value['id'] ?>';">
                                 <i class="fas fa-edit"></i> Editar
                             </button>
                         </td>
@@ -121,8 +121,8 @@
     }
     ?>
     
-    <script src="../assets/js/update_status.js"></script>
-    <script src="../assets/js/cadastro_representante.js"></script>
+    <script src="../assets/js/update_status.js">;</script>
+        
 </body>
 
 </html>

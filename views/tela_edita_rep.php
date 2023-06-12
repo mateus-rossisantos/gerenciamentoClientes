@@ -10,9 +10,11 @@
 </head>
 <body>
 <?php
+if (isset($_GET['userid'])) {
+  $representante = $_GET['userid'];
+}
       include '../dao/representanteDao.php';
-      $doc = 1;//AQUI SETEI FIXO UM ID POIS NÃO CONSEGUI PEGAR PELA SESSÃO E NEM COM POST.
-      $rep= busca_representante_por_id($doc);
+      $rep= busca_representante_por_id($representante);
       $nome = $rep['name'];
       $endereco = $rep['address'];
       $telefone = $rep['phone'];
