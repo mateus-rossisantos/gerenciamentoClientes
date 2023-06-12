@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($statusAtualizado) {
         http_response_code(200);
-        header('Location: views/home.php');
+        header('Location: views/home_admin.php');
         exit;
     } else {
         http_response_code(500);

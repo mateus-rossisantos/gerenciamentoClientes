@@ -2,9 +2,21 @@ body {
     margin: 2% 10% 10% 10%;
     background-color: azure;
 }
+
 .user-links {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+#hello {
+    color: #363746;
+    flex-grow: 1;
+    text-align: center;
+}
+  
+#links {
+    display: flex;
     justify-content: flex-end;
 }
 

@@ -100,6 +100,27 @@ function testa_cpf($document)
     return $array;
 }
 
+function testa_telefone($telefone,$document)
+{
+
+    $conexao = cria_Conexao();
+
+    $array = array();
+
+    $sql = "SELECT phone,document FROM representante WHERE phone = :phone AND document = :document";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindValue(":phone", $telefone);
+    $stmt->bindValue(":document", $document);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        $array = $stmt->fetch();
+    }
+
+    return $array;
+}
+
 function atualiza_senha($document, $password)
 {
 
@@ -142,6 +163,46 @@ function atualiza_status($id, $status)
         print($e->getMessage());
         die();
     }
+}
+
+function busca_representante_por_id($id){
+    $pdo = cria_Conexao();
+
+    $array = array();
+
+    $sql = "SELECT * FROM representante WHERE id = :id";
+
+    $sql = $pdo->prepare($sql);
+    $sql->bindValue("id", $id);
+    $sql->execute();
+
+    IF($sql->rowCount() > 0){
+        $array = $sql->fetch();
+    }
+
+    return $array;
+}
+
+function alteraRepresentante($doc,$nome,$endereco,$telefone,$email,$documento,$regiao,$senha)
+{
+   
+    try {
+        $conn = cria_Conexao();
+
+        $sql = "UPDATE representante SET name=?, address=?, phone=?, email=?, document=?, state=?, password=?  WHERE id=?";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([$nome,$endereco,$telefone,$email,$documento,$regiao,$senha,$doc]);
+
+        $conn = null;
+
+        return true;
+
+    } catch (PDOException $e) {
+        print($e->getMessage());
+    }
+    
 }
 
 // function atualiza_aluno($id, $nome, $matricula)

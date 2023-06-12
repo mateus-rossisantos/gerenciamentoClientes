@@ -26,9 +26,14 @@
     ?>
         <!-- conteúdo que está acima da tabela -->
         <div class="user-links">
-            <a href="#" class="mr-2">Meu perfil</a>
-            <a class="mr-2">|</a>
-            <a href="../logout.php">Sair</a>
+            <div id="hello">
+                <h2>Olá <?=$representanteName?>, seja bem vindo a área administrativa!</h2>
+            </div>
+            <div id="links">
+                <a href="#" class="mr-2">Meu perfil</a>
+                <a class="mr-2">|</a>
+                <a href="../logout.php">Sair</a>
+            </div>
         </div>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
@@ -61,7 +66,6 @@
                     <th scope="col">Estado</th>
                     <th scope="col">Status</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,6 +75,9 @@
                         <td><?= $value['email'] ?></td>
                         <td><?= $value['phone'] ?></td>
                         <td><?= $value['state'] ?></td>
+
+                        <?$_SESSION['id'] = $value['id'];?>
+
                         <td>
                             <select onchange="atualizarStatus(this.value, <?= $value['id'] ?>)">
                                 <option value="0" <?php if ($value['status'] == 0) {
@@ -85,13 +92,8 @@
                             </select>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm">
+                            <button type="button" class="btn btn-info btn-sm" onclick="location.href='tela_edita_rep.php?userid=<?= $value['id'] ?>';">
                                 <i class="fas fa-edit"></i> Editar
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i> Excluir
                             </button>
                         </td>
                     </tr>
@@ -112,9 +114,9 @@
         exit;
     }
     ?>
-
-    <script src="../assets/js/update_status.js"></script>
-
+    
+    <script src="../assets/js/update_status.js">;</script>
+        
 </body>
 
 </html>

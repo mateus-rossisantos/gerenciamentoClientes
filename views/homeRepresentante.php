@@ -26,9 +26,14 @@
     ?>
         <!-- conteúdo que está acima da tabela -->
         <div class="user-links">
-            <a href="#" class="mr-2">Meu perfil</a>
-            <a class="mr-2">|</a>
-            <a href="../logout.php">Sair</a>
+            <div id="hello">
+                <h2>Olá <?=$representanteName?>, seja bem vindo a área administrativa!</h2>
+            </div>
+            <div id="links">
+                <a href="#" class="mr-2">Meu perfil</a>
+                <a class="mr-2">|</a>
+                <a href="../logout.php">Sair</a>
+            </div>
         </div>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
@@ -59,7 +64,6 @@
                     <th scope="col">Telefone</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,13 +74,8 @@
                         <td><?= $value['phone'] ?></td>
                         <td><?= $value['state'] ?></td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm">
+                            <button type="button" class="btn btn-info btn-sm" onclick = tela_edita_cliente();> <!-- Ainda não foi implementada -->
                                 <i class="fas fa-edit"></i> Editar
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i> Excluir
                             </button>
                         </td>
                     </tr>
@@ -99,5 +98,5 @@
     ?>
 
 </body>
-
+<script src="../assets/js/cadastro_representante.js"></script>
 </html>

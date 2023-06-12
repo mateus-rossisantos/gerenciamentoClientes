@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Redirecione para a página "index.php"
             if($logged_user['status'] == 2) {
-                header('Location: views/home.php');
+                header('Location: views/home_admin.php');
             } else {
                 header('Location: views/homeRepresentante.php');
             }
