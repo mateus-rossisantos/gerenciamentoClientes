@@ -64,7 +64,6 @@
                     <th scope="col">Telefone</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,11 +76,6 @@
                         <td>
                             <button type="button" class="btn btn-info btn-sm" onclick = tela_edita_cliente();> <!-- Ainda não foi implementada -->
                                 <i class="fas fa-edit"></i> Editar
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i> Excluir
                             </button>
                         </td>
                     </tr>
