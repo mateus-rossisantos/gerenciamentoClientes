@@ -35,3 +35,20 @@ UPDATE representante SET status = 2 WHERE id = :id;
 
 ALTER USER 'gerenciamentoclientes'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 testando 
+
+CREATE TABLE clientes (
+  client_id INT PRIMARY KEY AUTO_INCREMENT,
+  status INT NOT NULL,
+  responsible VARCHAR(100) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  cpfcnpj VARCHAR(20) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone1 VARCHAR(20) NOT NULL,
+  phone2 VARCHAR(20),
+  address VARCHAR(100) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  state VARCHAR(50) NOT NULL,
+  zipCode VARCHAR(10) NOT NULL,
+  representative_id INT,
+  FOREIGN KEY (representante_id) REFERENCES representantes (id)
+);
