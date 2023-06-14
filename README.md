@@ -15,6 +15,7 @@ Este comando inicializará uma imagem do MySql em um container
 
 use gerenciamentoclientes;
 
+```
 CREATE TABLE representante (
 id bigint unsigned NOT NULL AUTO_INCREMENT,
 name varchar(100) NOT NULL,
@@ -28,6 +29,7 @@ password varchar(100) NOT NULL,
 PRIMARY KEY (id),
 UNIQUE KEY id (id)
 );
+```
 
 para tornar algum usuário o adm, rodar o seguinte script
 UPDATE representante SET status = 2 WHERE id = :id;
@@ -36,6 +38,7 @@ UPDATE representante SET status = 2 WHERE id = :id;
 ALTER USER 'gerenciamentoclientes'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 testando 
 
+```
 CREATE TABLE clientes (
   client_id INT PRIMARY KEY AUTO_INCREMENT,
   status INT NOT NULL,
@@ -52,3 +55,4 @@ CREATE TABLE clientes (
   representative_id INT,
   FOREIGN KEY (representante_id) REFERENCES representantes (id)
 );
+```
