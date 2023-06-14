@@ -39,7 +39,7 @@ ALTER USER 'gerenciamentoclientes'@'%' IDENTIFIED WITH mysql_native_password BY 
 testando 
 
 ```
-CREATE TABLE clientes (
+CREATE TABLE cliente (
   client_id INT PRIMARY KEY AUTO_INCREMENT,
   status INT NOT NULL,
   responsible VARCHAR(100) NOT NULL,
