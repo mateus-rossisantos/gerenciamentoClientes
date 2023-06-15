@@ -13,6 +13,8 @@ Este comando inicializará uma imagem do MySql em um container
 
 ## Script para criação do banco de dados
 
+![entidade relacionamento](assets/img/entidades.png)
+
 use gerenciamentoclientes;
 
 ```
@@ -42,19 +44,19 @@ testando
 ```
 CREATE TABLE cliente 
 (
-	client_id INT PRIMARY KEY AUTO_INCREMENT,
-	status INT NOT NULL,
-	responsible VARCHAR(100) NOT NULL,
-	name VARCHAR(100) NOT NULL,
-	cpfcnpj VARCHAR(20) NOT NULL,
-	email VARCHAR(100) NOT NULL,
-	phone1 VARCHAR(20) NOT NULL,
-	phone2 VARCHAR(20),
-	address VARCHAR(250) NOT NULL,
-	city VARCHAR(100) NOT NULL,
-	state VARCHAR(50) NOT NULL,
-	zipCode VARCHAR(10) NOT NULL,
-	id bigint unsigned NOT NULL,
-	CONSTRAINT FK_RepresentanteId FOREIGN KEY (id) REFERENCES representante (id)
+  client_id INT PRIMARY KEY AUTO_INCREMENT,
+  status INT NOT NULL,
+  responsible VARCHAR(100) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  cpfcnpj VARCHAR(20) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone1 VARCHAR(20) NOT NULL,
+  phone2 VARCHAR(20),
+  address VARCHAR(250) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  state VARCHAR(50) NOT NULL,
+  zip_code VARCHAR(10) NOT NULL,
+  id bigint unsigned NOT NULL,
+  CONSTRAINT FK_RepresentanteId FOREIGN KEY (id) REFERENCES representante (id)
 );
 ```
