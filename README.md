@@ -16,18 +16,19 @@ Este comando inicializará uma imagem do MySql em um container
 use gerenciamentoclientes;
 
 ```
-CREATE TABLE representante (
-id bigint unsigned NOT NULL AUTO_INCREMENT,
-name varchar(100) NOT NULL,
-address varchar(250),
-phone varchar(15),
-email varchar(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
-document varchar(14),
-state varchar(2),
-status int DEFAULT 0,
-password varchar(100) NOT NULL,
-PRIMARY KEY (id),
-UNIQUE KEY id (id)
+CREATE TABLE representante 
+(
+  id bigint unsigned NOT NULL AUTO_INCREMENT,
+  name varchar(100) NOT NULL,
+  address varchar(250),
+  phone varchar(15),
+  email varchar(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
+  document varchar(14),
+  state varchar(2),
+  status int DEFAULT 0,
+  password varchar(100) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY id (id)
 );
 ```
 
@@ -39,20 +40,21 @@ ALTER USER 'gerenciamentoclientes'@'%' IDENTIFIED WITH mysql_native_password BY 
 testando 
 
 ```
-CREATE TABLE cliente (
-  client_id INT PRIMARY KEY AUTO_INCREMENT,
-  status INT NOT NULL,
-  responsible VARCHAR(100) NOT NULL,
-  name VARCHAR(100) NOT NULL,
-  cpfcnpj VARCHAR(20) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  phone1 VARCHAR(20) NOT NULL,
-  phone2 VARCHAR(20),
-  address VARCHAR(250) NOT NULL,
-  city VARCHAR(100) NOT NULL,
-  state VARCHAR(50) NOT NULL,
-  zipCode VARCHAR(10) NOT NULL,
-  representative_id INT NOT NULL
+CREATE TABLE cliente 
+(
+	client_id INT PRIMARY KEY AUTO_INCREMENT,
+	status INT NOT NULL,
+	responsible VARCHAR(100) NOT NULL,
+	name VARCHAR(100) NOT NULL,
+	cpfcnpj VARCHAR(20) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	phone1 VARCHAR(20) NOT NULL,
+	phone2 VARCHAR(20),
+	address VARCHAR(250) NOT NULL,
+	city VARCHAR(100) NOT NULL,
+	state VARCHAR(50) NOT NULL,
+	zipCode VARCHAR(10) NOT NULL,
+	id bigint unsigned NOT NULL,
+	CONSTRAINT FK_RepresentanteId FOREIGN KEY (id) REFERENCES representante (id)
 );
-
 ```
