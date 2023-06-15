@@ -52,7 +52,7 @@ CREATE TABLE cliente (
   city VARCHAR(100) NOT NULL,
   state VARCHAR(50) NOT NULL,
   zipCode VARCHAR(10) NOT NULL,
-  representative_id INT,
-  FOREIGN KEY (representante_id) REFERENCES representantes (id)
+  representative_id INT NOT NULL
 );
+
 ```
