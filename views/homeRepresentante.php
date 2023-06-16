@@ -27,7 +27,7 @@
         <!-- conteúdo que está acima da tabela -->
         <div class="user-links">
             <div id="hello">
-                <h2>Olá <?=$representanteName?>, seja bem vindo a área administrativa!</h2>
+                <h2>Olá <?= $representanteName ?>, seja bem vindo a área administrativa!</h2>
             </div>
             <div id="links">
                 <a href="#" class="mr-2">Meu perfil</a>
@@ -74,7 +74,7 @@
                         <td><?= $value['phone'] ?></td>
                         <td><?= $value['state'] ?></td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm" onclick = tela_edita_cliente();> <!-- Ainda não foi implementada -->
+                            <button type="button" class="btn btn-info btn-sm" onclick=tela_edita_cliente();> <!-- Ainda não foi implementada -->
                                 <i class="fas fa-edit"></i> Editar
                             </button>
                         </td>
@@ -84,7 +84,7 @@
         </table>
 
         <div class="floating-button">
-            <button type="button" class="btn btn-primary btn-floating">
+            <button type="button" class="btn btn-primary btn-floating" onclick="location.href='cadastro_cliente.php';">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
@@ -99,4 +99,5 @@
 
 </body>
 <script src="../assets/js/cadastro_representante.js"></script>
+
 </html>
