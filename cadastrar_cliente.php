@@ -18,10 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
     $repId = $_SESSION['representante_id'];
 
+    $cliente = lista_cliente();
+
+    foreach ($cliente as $value) {
+        if (in_array($cnpj, $value) || in_array($email, $value) || in_array($phone1, $value)) {
+
+            header('Location: views/cadastro_cliente.php');
+            exit();
+        }
+    }
+
+
+
     $id = insere_cliente($name, $responsible, $cnpj, $email, $phone1, $phone2, $address, $city, $state, $cep, $repId);
 
-    echo "Cliente cadastrado com sucesso!";
-
-    header("Location: index.php");
-    exit;
+    header("Location: views/cadastro_realizado.php");
+    exit;    
+        
+    
 }
