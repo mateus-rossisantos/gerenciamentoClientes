@@ -13,11 +13,10 @@ $senha = password_hash($_POST['password'], PASSWORD_DEFAULT);
 if (alteraRepresentante($doc,$nome,$endereco,$telefone,$email,$documento,$regiao,$senha)) {
     echo"<script language='javascript' type='text/javascript'>
     alert('Representante Alterado!!!');window.location
-    .href='./views/home.php';</script>";
-    //header("location: login.html");
+    .href='views/home_admin.php';</script>";
+    
 } else {
     echo"<script language='javascript' type='text/javascript'>
     alert('Erro ao Alterar Representante!!!');window.location
-    .href='./views/home.php';</script>";
-    //header("location: cadastrodoador.html?msg=Erro ao inserir Doador");
+    .href='views/home_admin.php';</script>";
 }

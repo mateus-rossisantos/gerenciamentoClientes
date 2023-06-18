@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.principal{
+  display: flex;
+  width: 100%;
+  height: 930px;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: azure;
+}
+
+.container h2 {
+  text-align: center;
+}
+
+.container label,
+.container input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.container input[type="text"],
+.container input[type="password"],
+.container input[type="email"] {
+  width: 98%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.container input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.required-label::after {
+  content: " *";
+  color: red;
+}
+
+.required-label-cpf::before {
+  content: "* ";
+  color: red;
+}
+
+.campo-visivel {
+  display: block;
+}
+
+.campo-invisivel {
+  display: none;
+}
+
+.cpf-or-cnpj-radios {
+  display: flex;
+}
+
+#cpf {
+  margin-inline-end: 20px;
+}

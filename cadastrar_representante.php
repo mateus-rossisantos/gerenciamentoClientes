@@ -12,10 +12,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $state = $_POST['uf'];
     $password = $_POST['password'];
 
+     $representante = lista_representante();
+
+
+     foreach ($representante as $value) {
+      if (in_array($document, $value) || in_array($email, $value) || in_array($fone, $value)) {
+
+       // echo "<script>alert('Verifique cpf, telefone ou email.');</script>";
+
+          header('Location: views/cadastro_rep.php');
+          exit();
+       
+      }  
+  }
+  
+
     insere_representante($name, $address, $fone, $email, $document, $state, $password);
-
-    echo "Representante cadastrado com sucesso!";
-
     header("Location: views/cadastro_realizado.php");
-    exit;
+    
+    exit();
 }
+?>

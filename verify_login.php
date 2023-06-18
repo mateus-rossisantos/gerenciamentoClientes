@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if($logged_user['status'] == 2) {
                 header('Location: views/home_admin.php');
             } else {
-                header('Location: views/homeRepresentante.php');
+                header('Location: views/home_representante.php');
             }
             exit;
         } else {

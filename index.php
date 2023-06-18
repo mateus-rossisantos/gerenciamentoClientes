@@ -16,7 +16,7 @@
         if ($_SESSION['representante_status'] == 2) {
             header('Location: views/home_admin.php');
         } else {
-            header('Location: views/homeRepresentante.php');
+            header('Location: views/home_representante.php');
         }
         exit;
     } else {
