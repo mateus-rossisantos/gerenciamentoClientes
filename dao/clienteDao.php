@@ -16,6 +16,18 @@ function lista_cliente()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function lista_cliente_por_representante($representante_id)
+{
+    $conexao = cria_conexao();
+
+    $sql = "SELECT * FROM cliente WHERE repId = :repId";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindValue(':repId', $representante_id);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 function busca_cliente_por_nome($name)
 {
@@ -73,7 +85,7 @@ function atualiza_status($id, $status)
     try {
         $conexao = cria_conexao();
 
-        $sql = "UPDATE cliente SET status=?  WHERE id =?";
+        $sql = "UPDATE cliente SET status=?  WHERE client_id =?";
 
         $stmt = $conexao->prepare($sql);
 
