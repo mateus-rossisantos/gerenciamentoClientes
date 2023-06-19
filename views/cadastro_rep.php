@@ -13,7 +13,7 @@
 <body>
   <div class="principal">
     <div class="container">
-    <a href="../index.php">Voltar</a>
+      <a href="../index.php">Voltar</a>
       <h2>Cadastro de Representante:</h2>
       <form action="../cadastrar_representante.php" method="post">
         <label for="username" class="required-label">Nome:</label>

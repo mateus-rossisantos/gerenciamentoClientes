@@ -1,71 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-=======
 
->>>>>>> e41300e0998125fe174a46dc2e3bfd46549df3a1
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-<<<<<<< HEAD
-      
-    <link rel="stylesheet" type="text/css" href="home.css">
-
-    <title>Home</title>
-
-</head>
-<body>
-
-<ul>
-        <?php
-        $menuItems = array(
-            "Login" => "index.php",
-            "Clientes" => "about.php",
-            "Representantes" => "services.php",
-            "Contact" => "contact.php"
-        );
-
-        foreach ($menuItems as $item => $url) {
-            echo "<li><a href='$url'>$item</a></li>";
-        }
-     ?>
-
-    <div class="menu">
-        <ul>
-            <li><a href="index.php">Login</a><li>
-            <li><a href="#section1">Seção 1</a></li>
-            <li><a href="#section2">Seção 2</a></li>
-            <li><a href="#section3">Seção 3</a></li>
-            <li><a href="logout.php">Logout</a><li>
-        </ul>
-    </div>
-
-    <div class="content">
-     
-        <div id="section1" class="section" style="background-color: lightblue;">
-            <h2>Seção 1</h2>
-            <p>Conteúdo da seção 1...</p>
-        </div>
-
-        <div id="section2" class="section" style="background-color: lightgreen;">
-            <h2>Seção 2</h2>
-            <p>Conteúdo da seção 2...</p>
-        </div>
-
-        <div id="section3" class="section" style="background-color: lightyellow;">
-            <h2>Seção 3</h2>
-            <p>Conteúdo da seção 3...</p>
-        </div>
-    </div>
-    
-</body>
-=======
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-=======
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
->>>>>>> 895dcf42d9af4d5ca9b91c761dcfae6e1bd733ba
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/user_home.css">
     <title>Home</title>
@@ -114,7 +52,7 @@
                     </div>
                 </div>
             </form>
-            
+
         </div>
         <span id="message-status" style="display: none;"></span>
         <!-- tabela -->
@@ -142,8 +80,12 @@
                         <td><?= $value['responsible'] ?></td>
                         <td>
                             <select id="statusSelect">
-                                <option value="0" <?php if ($value['status'] == 0) { echo 'selected'; } ?>>Inativo</option>
-                                <option value="1" <?php if ($value['status'] == 1) { echo 'selected'; } ?>>Ativo</option>
+                                <option value="0" <?php if ($value['status'] == 0) {
+                                                        echo 'selected';
+                                                    } ?>>Inativo</option>
+                                <option value="1" <?php if ($value['status'] == 1) {
+                                                        echo 'selected';
+                                                    } ?>>Ativo</option>
                             </select>
                             <span id="<?= $value['client_id'] ?>" style="display: none;"></span>
                         </td>
@@ -175,5 +117,4 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../assets/js/update_status_client.js"></script>
 
->>>>>>> e41300e0998125fe174a46dc2e3bfd46549df3a1
 </html>

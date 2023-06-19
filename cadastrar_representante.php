@@ -12,24 +12,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $state = $_POST['uf'];
     $password = $_POST['password'];
 
-     $representante = lista_representante();
+    $representante = lista_representante();
+    $showAlert = false;
 
+    foreach ($representante as $value) {
+        if (in_array($document, $value) || in_array($email, $value) || in_array($fone, $value)) {
+            $showAlert = true;
+            break;
+        }
+    }
 
-     foreach ($representante as $value) {
-      if (in_array($document, $value) || in_array($email, $value) || in_array($fone, $value)) {
-
-       // echo "<script>alert('Verifique cpf, telefone ou email.');</script>";
-
-          header('Location: views/cadastro_rep.php');
-          exit();
-       
-      }  
-  }
-  
+    if ($showAlert) {
+        echo "<script>alert('Já existe um representante salvo com estes dados.');</script>";
+        echo "<script>window.location.href = 'views/cadastro_rep.php';</script>";
+        exit();
+    }
 
     insere_representante($name, $address, $fone, $email, $document, $state, $password);
     header("Location: views/cadastro_realizado.php");
-    
+
     exit();
 }
-?>

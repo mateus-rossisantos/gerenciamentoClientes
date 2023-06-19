@@ -19,21 +19,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $repId = $_SESSION['representante_id'];
 
     $cliente = lista_cliente();
+    $showAlert = false;
 
     foreach ($cliente as $value) {
         if (in_array($cnpj, $value) || in_array($email, $value) || in_array($phone1, $value)) {
 
-            header('Location: views/cadastro_cliente.php');
-            exit();
+            $showAlert = true;
+            break;
         }
     }
 
-
+    if ($showAlert) {
+        echo "<script>alert('Já existe um cliente salvo com estes dados.');</script>";
+        echo "<script>window.location.href = 'views/cadastro_cliente.php';</script>";
+        exit();
+    }
 
     $id = insere_cliente($name, $responsible, $cnpj, $email, $phone1, $phone2, $address, $city, $state, $cep, $repId);
 
     header("Location: views/cadastro_realizado.php");
-    exit;    
-        
-    
+    exit;
 }
