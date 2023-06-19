@@ -37,6 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $id = insere_cliente($name, $responsible, $cnpj, $email, $phone1, $phone2, $address, $city, $state, $cep, $repId);
 
-    header("Location: views/cadastro_realizado.php");
+    header("Location: index.php");
     exit;
 }
