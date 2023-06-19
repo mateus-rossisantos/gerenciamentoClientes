@@ -102,7 +102,7 @@
         </table>
 
         <div class="floating-button">
-            <button type="button" class="btn btn-primary btn-floating">
+            <button type="button" class="btn btn-primary btn-floating" onclick="location.href='cadastro_rep.php';">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
