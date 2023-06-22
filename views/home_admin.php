@@ -55,10 +55,10 @@
 
             <div>
                 <form method="post" action="">
-                    <button name="botao_false" <? if ($cliente) { ?>class="btn btn-secondary mr-2" <? } else { ?>class="btn btn-primary mr-2" <? } ?>>
+                    <button name="botao_false" <?php if ($cliente) { ?>class="btn btn-secondary mr-2" <?php } else { ?>class="btn btn-primary mr-2" <?php } ?>>
                         Representantes
                     </button>
-                    <button name="botao_true" <? if ($cliente) { ?>class="btn btn-primary" <? } else { ?>class="btn btn-secondary" <? } ?>>
+                    <button name="botao_true" <?php if ($cliente) { ?>class="btn btn-primary" <?php } else { ?>class="btn btn-secondary" <?php } ?>>
                         Clientes
                     </button>
                 </form>
@@ -189,9 +189,7 @@
     }
     ?>
 
-    <script src="../assets/js/update_status.js">
-        ;
-    </script>
+    <script src="../assets/js/update_status.js"></script>
 
 </body>
 
