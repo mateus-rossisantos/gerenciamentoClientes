@@ -1,11 +1,87 @@
+window.onload = function() {
 
-const phoneInput = document.getElementById('telefone');
-phoneInput.addEventListener('input', function() {
-    const phone = phoneInput.value;
-    const telefoneFormatado = formatPhone(phone);
-    
-    phoneInput.value = telefoneFormatado;
-});
+    // analisa o campo do CNPJ
+    const cnpj = document.getElementById('cnpj'); 
+    cnpj.addEventListener('input', function() {
+        const cnpjText = cnpj.value;
+
+        if (!validaCNPJ(cnpjText)){
+            cnpj.setCustomValidity('Insira um CNPJ válido');
+        }else{
+            cnpj.setCustomValidity('');
+        }  
+    }); 
+
+    // analisa o campo do telefone
+    const phoneInput = document.getElementById('telefone1');
+    phoneInput.addEventListener('input', function() {
+        const phone = phoneInput.value;
+        const telefoneFormatado = formatPhone(phone);
+        
+        phoneInput.value = telefoneFormatado;
+    });
+}
+
+
+function validaCNPJ(cnpj) {
+    // Remove todos os caracteres não numéricos
+    cnpj = cnpj.replace(/\D/g, '');
+
+    // Verifica se todos os dígitos são iguais (situação inválida)
+    if (/^(\d)\1+$/.test(cnpj)) {
+        return false;
+    }
+
+    // Verifica o tamanho do CNPJ
+    if (cnpj.length !== 14) {
+        return false;
+    }
+
+    // Verifica os dígitos verificadores
+    var tamanho = cnpj.length - 2;
+    var numeros = cnpj.substring(0, tamanho);
+    var digitos = cnpj.substring(tamanho);
+    var soma = 0;
+    var pos = tamanho - 7;
+    var resultado;
+
+    for (var i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2) {
+            pos = 9;
+        }
+    }
+
+    resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+
+    if (resultado != digitos.charAt(0)) {
+        return false;
+    }
+
+    tamanho += 1;
+    numeros = cnpj.substring(0, tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+
+    for (var i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2) {
+            pos = 9;
+        }
+    }
+
+    resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+
+    if (resultado != digitos.charAt(1)) {
+        return false;
+    } else {
+        cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2}).*/, '$1.$2.$3/$4-$5');
+        document.getElementById('cnpj').value = cnpj;
+        return true;
+    }
+
+}
+
 
 // formatação do telefone
 function formatPhone(phone) {
@@ -24,115 +100,7 @@ function formatPhone(phone) {
     return phone;
 }
 
-// analisa o campo do CNPJ
 
-const cnpj = document.getElementById('cnpj');
-    
-cnpj.addEventListener('input', function() {
-    const cnpjText = cnpj.value;
-
-    if (!validateCNPJ(cnpjText)) {
-        campoDocumento.setCustomValidity('O valor do CNPJ é inválido');
-
-    } else {
-        if (!valida_cnpj(cnpjText)){
-            campoDocumento.setCustomValidity('Este CNPJ é falso');
-        }else{
-            campoDocumento.setCustomValidity('');
-        }
-    }
-});     
-
-function validateCNPJ(cnpj) {
-    // Remove caracteres não numéricos
-    cnpj = cnpj.replace(/\D/g, '');
-  
-    if (cnpj.length !== 14) {
-        return false;
-    } else if (/^(\d)\1+$/.test(cnpj)) {
-        return false;
-    } else return true;
-}
-
-/*
- Valida CPF
- 
- Valida se for CPF
- 
- @param  string cpf O CPF com ou sem pontos e traço
- @return bool True para CPF correto - False para CPF incorreto
-*/
-function valida_cpf( valor ) {
-
-    // Garante que o valor é uma string
-    valor = valor.toString();
-    
-    // Remove caracteres inválidos do valor
-    valor = valor.replace(/[^0-9]/g, '');
-
-
-    // Captura os 9 primeiros dígitos do CPF
-    // Ex.: 02546288423 = 025462884
-    var digitos = valor.substr(0, 9);
-
-    // Faz o cálculo dos 9 primeiros dígitos do CPF para obter o primeiro dígito
-    var novo_cpf = calc_digitos_posicoes( digitos );
-
-    // Faz o cálculo dos 10 dígitos do CPF para obter o último dígito
-    var novo_cpf = calc_digitos_posicoes( novo_cpf, 11 );
-
-    // Verifica se o novo CPF gerado é idêntico ao CPF enviado
-    if ( novo_cpf === valor ) {
-        // CPF válido
-        return true;
-    } else {
-        // CPF inválido
-        return false;
-    }
-    
-} // valida_cpf
-
-/*
- valida_cnpj
- 
- Valida se for um CNPJ
- 
- @param string cnpj
- @return bool true para CNPJ correto
-*/
-function valida_cnpj ( valor ) {
-
-    // Garante que o valor é uma string
-    valor = valor.toString();
-    
-    // Remove caracteres inválidos do valor
-    valor = valor.replace(/[^0-9]/g, '');
-
-    
-    // O valor original
-    var cnpj_original = valor;
-
-    // Captura os primeiros 12 números do CNPJ
-    var primeiros_numeros_cnpj = valor.substr( 0, 12 );
-
-    // Faz o primeiro cálculo
-    var primeiro_calculo = calc_digitos_posicoes( primeiros_numeros_cnpj, 5 );
-
-    // O segundo cálculo é a mesma coisa do primeiro, porém, começa na posição 6
-    var segundo_calculo = calc_digitos_posicoes( primeiro_calculo, 6 );
-
-    // Concatena o segundo dígito ao CNPJ
-    var cnpj = segundo_calculo;
-
-    // Verifica se o CNPJ gerado é idêntico ao enviado
-    if ( cnpj === cnpj_original ) {
-        return true;
-    }
-    
-    // Retorna falso por padrão
-    return false;
-    
-} // valida_cnpj
 
 /*
  calc_digitos_posicoes
@@ -191,4 +159,4 @@ function calc_digitos_posicoes( digitos, posicoes = 10, soma_digitos = 0 ) {
     // Retorna
     return cpf;
     
-} // calc_digitos_posicoes
+}
