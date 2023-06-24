@@ -1,3 +1,4 @@
+
 window.onload = function() {
 
     // analisa o campo do CNPJ
