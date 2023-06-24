@@ -50,7 +50,7 @@
         </div>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
-                <img src="../assets/img/vineicon.jpeg" alt="vine image" class="mr-2">
+                <img src="../assets/img/vineicon.png" alt="vine image" class="mr-2">
             </div>
 
             <div>
