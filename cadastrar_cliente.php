@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
     $repId = $_SESSION['representante_id'];
 
+
     $cliente = lista_cliente();
     $showAlert = false;
 
