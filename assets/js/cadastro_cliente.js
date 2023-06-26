@@ -25,13 +25,13 @@ window.onload = function() {
 
 }
 
-// Validação e formatação do telefone
+// Validação e formatação do telefone1
 function validateAndFormatPhone1() {
     const phoneInput = document.getElementById('telefone1');
     const phone = phoneInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
     getValidatePhone(phoneInput, phone);
 }
-// Validação e formatação do telefone
+// Validação e formatação do telefone2
 function validateAndFormatPhone2() {
     const phoneInput = document.getElementById('telefone2');
     const phone = phoneInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
@@ -55,8 +55,8 @@ function getValidatePhone(phoneInput, phone) {
    
        phoneInput.value = formattedPhone;
        phoneInput.setCustomValidity('');
+       
      } else {
-       // Telefone inválido
        phoneInput.setCustomValidity('Número de telefone inválido');
      }
 }
