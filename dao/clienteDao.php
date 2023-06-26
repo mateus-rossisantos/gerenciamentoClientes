@@ -99,3 +99,42 @@ function atualiza_status($id, $status)
         die();
     }
 }
+
+function busca_cliente_por_id($cliente)
+{
+    $conexao = cria_conexao();
+
+    $sql = "SELECT * FROM cliente WHERE client_id = :client_id";
+
+    $stmt = $conexao->prepare($sql);
+
+    $stmt->bindValue(':client_id', $cliente);
+
+    $stmt->execute();
+
+    $cliente = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return array_shift($cliente);
+}
+
+function alteraCliente($doc,$nome,$responsavel,$endereco,$cidade,$telefone1,$telefone2,$email,$documento,$regiao,$cep)
+{
+   
+    try {
+        $conn = cria_Conexao();
+
+        $sql = "UPDATE cliente SET responsible=?, name=?, cnpj=?, email=?, phone1=?, phone2=?, address=?, city=?,  state=?, zip_code=?  WHERE client_id=?";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([$responsavel,$nome,$documento,$email,$telefone1,$telefone2,$endereco,$cidade,$regiao,$cep,$doc]);
+
+        $conn = null;
+
+        return true;
+
+    } catch (PDOException $e) {
+        print($e->getMessage());
+    }
+    
+}
