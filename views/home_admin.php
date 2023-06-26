@@ -76,7 +76,7 @@
                 </div>
             </form>
         </div>
-
+        <span id="message-status" style="display: none;"></span>
         <?php if ($cliente) { ?>
             <!-- tabela cliente -->
             <table class="table table-striped">
@@ -89,8 +89,8 @@
                         <th scope="col">Estado</th>
                         <th scope="col">Responsável</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Representante</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Representante</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,12 +113,12 @@
                                 </select>
                                 <span id="<?= $value['client_id'] ?>" style="display: none;"></span>
                             </td>
-                            <td><?= $value['repId'] ?></td>
                             <td>
                                 <button type="button" class="btn btn-info btn-sm" onclick="location.href='#?userid=<?= $value['client_id'] ?>';">
                                     <i class="fas fa-edit"></i> Editar
                                 </button>
                             </td>
+                            <td><?= $value['repId'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -190,6 +190,8 @@
     ?>
 
     <script src="../assets/js/update_status.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/update_status_client.js"></script>
 
 </body>
 
