@@ -26,6 +26,7 @@ if (isset($_GET['userid'])) {
     ?>
   <div class="principal">
     <div class="container">
+    <a href="../index.php">Voltar</a>
     <h2>Edição de Representante:</h2>
       <form action="../edita_representante.php" method="post">
         <label for="username" class="required-label">Nome:</label>
