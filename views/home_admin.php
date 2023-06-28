@@ -67,7 +67,7 @@
             <!-- campo de busca -->
             <form class="form-inline">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Pesquisar">
+                    <input type="text" class="form-control custom-search-input" id="searchInput" onkeyup="searchElements()" placeholder="Pesquisar">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary" type="submit">
                             <i class="fas fa-search"></i>
@@ -102,7 +102,7 @@
                             <td><?= $value['city'] ?></td>
                             <td><?= $value['state'] ?></td>
                             <td><?= $value['responsible'] ?></td>
-                            <td>
+                            <td id="select-status">
                                 <select id="statusSelect">
                                     <option value="0" <?php if ($value['status'] == 0) {
                                                             echo 'selected';
@@ -113,7 +113,7 @@
                                 </select>
                                 <span id="<?= $value['client_id'] ?>" style="display: none;"></span>
                             </td>
-                            <td>
+                            <td id="btn-editar">
                                 <button type="button" class="btn btn-info btn-sm" onclick="location.href='#?userid=<?= $value['client_id'] ?>';">
                                     <i class="fas fa-edit"></i> Editar
                                 </button>
@@ -146,7 +146,7 @@
 
                             <? $_SESSION['id'] = $value['id']; ?>
 
-                            <td>
+                            <td id="select-status">
                                 <select onchange="atualizarStatus(this.value, <?= $value['id'] ?>)">
                                     <option value="0" <?php if ($value['status'] == 0) {
                                                             echo 'selected';
@@ -159,7 +159,7 @@
                                                         } ?>>Adm</option>
                                 </select>
                             </td>
-                            <td>
+                            <td id="btn-editar">
                                 <button type="button" class="btn btn-info btn-sm" onclick="location.href='tela_edita_rep.php?userid=<?= $value['id'] ?>';">
                                     <i class="fas fa-edit"></i> Editar
                                 </button>
@@ -192,6 +192,7 @@
     <script src="../assets/js/update_status.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/update_status_client.js"></script>
+    <script src="../assets/js/search.js"></script>
 
 </body>
 
