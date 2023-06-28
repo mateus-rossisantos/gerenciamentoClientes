@@ -57,7 +57,7 @@ if (isset($_GET['userid'])) {
         <input type="text" id="endereco" name="endereco" value="<?php echo $endereco; ?>" required placeholder=''>
 
         <label for="city" class="required-label">Cidade:</label>
-        <input type="text" id="city" name="city" value="<?php echo $responsavel; ?>" required placeholder=''>
+        <input type="text" id="city" name="city" value="<?php echo $cidade; ?>" required placeholder=''>
 
         <label for="estado">Estado:</label>
         <select id="uf" name="uf" value="<?php echo $regiao; ?>" required>
@@ -96,7 +96,7 @@ if (isset($_GET['userid'])) {
         <label for="cep" class="required-label">CEP:</label>
         <input type="text" id="cep" name="cep" value="<?php echo $cep; ?>" required placeholder=''>
 
-        <input type="submit" value="Cadastrar">
+        <input type="submit" value="Salvar">
       </form>
     </div>
   </div>
