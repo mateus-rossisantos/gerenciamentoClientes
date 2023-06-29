@@ -33,6 +33,9 @@
         <label for="telefone2">Telefone 2:</label>
         <input type="text" id="telefone2" name="telefone2" placeholder='Insira o número de telefone com DDD'>
 
+        <label for="cep" class="required-label">CEP:</label>
+        <input type="text" id="cep" value="" required name="cep" placeholder='Insira o CEP do cliente'>
+
         <label for="endereco" class="required-label">Endereço:</label>
         <input type="text" id="endereco" name="endereco" required placeholder='Digite o endereço do cliente'>
 
@@ -71,9 +74,6 @@
           <option value="EX">Estrangeiro</option>
         </select>
         <br><br>
-
-        <label for="cep" class="required-label">CEP:</label>
-        <input type="text" id="cep" value="" required name="cep" placeholder='Insira o CEP do cliente'>
 
         <input type="submit" value="Cadastrar">
       </form>

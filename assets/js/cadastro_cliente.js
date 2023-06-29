@@ -13,7 +13,16 @@ window.onload = function() {
         }  
     }); 
 
+    const cep = document.getElementById('cep'); 
+    cep.addEventListener('blur', function() {
+        const cepText = cep.value;
 
+        if (!validaCep(cepText)){
+            cep.setCustomValidity('Insira um CEP válido');
+        }else{
+            cep.setCustomValidity('');
+        }  
+    }); 
 
     // Analisa o campo do telefone 1
     const phoneInput = document.getElementById('telefone1');
@@ -61,6 +70,51 @@ function getValidatePhone(phoneInput, phone) {
      }
 }
 
+function validaCep(cep) {
+    // Remove todos os caracteres não numéricos
+    cep = cep.replace(/\D/g, '');
+
+    // Verifica o tamanho do CEP
+    if (cep.length !== 8) {
+        return false;
+    }
+    
+    var url = `https://viacep.com.br/ws/${cep}/json/`;
+
+    // Fazendo a requisição HTTP para a API ViaCEP
+    fetch(url).then(response => response.json())
+        .then(data => {
+            if (data.erro) {
+                console.log('CEP inválido');
+                return false;
+            } else {
+                const endereco = document.getElementById('endereco');
+                const cidade = document.getElementById('city');
+                endereco.value = data.logradouro + ', ' + data.complemento + " - " + data.bairro;
+                cidade.value = data.localidade;
+                povoaEstado(data.uf);
+            }
+        })
+        .catch(error => {
+            console.log('Erro na consulta de CEP:', error);
+        });
+    return true;
+}
+
+function povoaEstado(uf) {
+    const ufSelect = document.getElementById('uf'); 
+
+    // Percorrer as opções do select
+    for (let i = 0; i < ufSelect.options.length; i++) {
+    const option = ufSelect.options[i];
+    
+        // Comparar o valor da opção com a abreviação do estado
+        if (option.value === uf) {
+            option.selected = true; // Selecionar a opção correspondente
+            break; // Encerrar o loop
+        }
+    }
+}
 
 function validaCNPJ(cnpj) {
     // Remove todos os caracteres não numéricos
