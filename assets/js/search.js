@@ -11,8 +11,7 @@ function searchElements() {
     rows.forEach(row => {
         let cells = Array.from(row.querySelectorAll('td:not(#btn-editar)')); // não pega o botão editar
 
-        // cells.pop(); // remove o último elemento
-        let cellsWithoutEditButton = cells.filter(cell => cell.id !== 'select-status');
+        let cellsWithoutEditButton = cells.filter(cell => cell.id !== 'select-status'); // não adiciona o select nesse momento
 
         let select = row.querySelector('select');
         let selectedOption = select.options[select.selectedIndex];
@@ -21,7 +20,6 @@ function searchElements() {
         let matchFound = false;
         cellsWithoutEditButton.forEach(cell => {
             let cellText = cell.textContent || cell.innerText || cell.text;
-            console.log(cellText);
             if (cellText.toUpperCase().includes(searchName)) {
                 matchFound = true;
                 return;

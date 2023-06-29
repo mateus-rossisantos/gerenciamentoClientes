@@ -147,7 +147,7 @@
                             <? $_SESSION['id'] = $value['id']; ?>
 
                             <td id="select-status">
-                                <select onchange="atualizarStatus(this.value, <?= $value['id'] ?>)">
+                                <select id="statusSelect" onchange="atualizarStatus(this.value, <?= $value['id'] ?>)">
                                     <option value="0" <?php if ($value['status'] == 0) {
                                                             echo 'selected';
                                                         } ?>>Inativo</option>
