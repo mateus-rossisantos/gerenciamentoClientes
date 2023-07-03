@@ -138,3 +138,63 @@ function alteraCliente($doc,$nome,$responsavel,$endereco,$cidade,$telefone1,$tel
     }
     
 }
+
+function busca_representante_por_id($id){
+    $pdo = cria_Conexao();
+
+    $array = array();
+
+    $sql = "SELECT * FROM representante WHERE id = :id";
+
+    $sql = $pdo->prepare($sql);
+    $sql->bindValue("id", $id);
+    $sql->execute();
+
+    IF($sql->rowCount() > 0){
+        $array = $sql->fetch();
+    }
+
+    return $array;
+}
+
+function lista_representante(){
+
+    $pdo = cria_Conexao();
+
+    $array = array();
+
+    $sql = "SELECT id FROM representante where status in (1,2)";
+
+    $sql = $pdo->prepare($sql);
+    $sql->execute();
+
+    IF($sql->rowCount() > 0){
+        $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    return $array;
+
+}
+
+
+function alteraClienteRep($doc,$nome,$responsavel,$endereco,$cidade,$telefone1,$telefone2,$email,$documento,$regiao,$cep,$repid)
+{
+   
+    try {
+        $conn = cria_Conexao();
+
+        $sql = "UPDATE cliente SET responsible=?, name=?, cnpj=?, email=?, phone1=?, phone2=?, address=?, city=?,  state=?, zip_code=?, repId=?  WHERE client_id=?";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([$responsavel,$nome,$documento,$email,$telefone1,$telefone2,$endereco,$cidade,$regiao,$cep,$repid,$doc]);
+
+        $conn = null;
+
+        return true;
+
+    } catch (PDOException $e) {
+        print($e->getMessage());
+    }
+    
+}

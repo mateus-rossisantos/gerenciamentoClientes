@@ -114,7 +114,7 @@
                                 <span id="<?= $value['client_id'] ?>" style="display: none;"></span>
                             </td>
                             <td id="btn-editar">
-                                <button type="button" class="btn btn-info btn-sm" onclick="location.href='#?userid=<?= $value['client_id'] ?>';">
+                                <button type="button" class="btn btn-info btn-sm" onclick="location.href='tela_edita_cli_id.php?userid=<?= $value['client_id'] ?>';">
                                     <i class="fas fa-edit"></i> Editar
                                 </button>
                             </td>
