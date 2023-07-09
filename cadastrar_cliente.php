@@ -36,14 +36,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    $emailValido = validarEmail($email);
+
+    if (!$emailValido) {
+        echo "<script>alert('Email inválido!');</script>";
+        echo "<script>window.location.href = 'views/cadastro_cliente.php';</script>";
+        exit();
+    }
+
     $id = insere_cliente($name, $responsible, $cnpj, $email, $phone1, $phone2, $address, $city, $state, $cep, $repId);
 
     header("Location: index.php");
     exit;
 }
 
+function validarEmail($email)
+{
+    $apiKey = '5ee9fb16cc8b2df4bbda2b9d210fc9de';
 
-function validarCNPJ($cnpj) {
+    $url = "http://apilayer.net/api/check?access_key={$apiKey}&email={$email}";
+
+    $response = file_get_contents($url);
+
+    $result = json_decode($response);
+
+    if ($result->format_valid && $result->smtp_check) {
+        echo true;
+    } else {
+        echo false;
+    }
+}
+
+
+function validarCNPJ($cnpj)
+{
     $cnpj = preg_replace('/\D/', '', $cnpj);
 
     // Verifica se todos os dígitos são iguais (situação inválida)
