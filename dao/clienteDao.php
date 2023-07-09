@@ -157,23 +157,17 @@ function busca_representante_por_id($id){
     return $array;
 }
 
-function lista_representante(){
+function lista_representante()
+{
+    $conexao = cria_conexao();
 
-    $pdo = cria_Conexao();
+    $sql = "SELECT * FROM representante where status in (1,2)";
 
-    $array = array();
+    $stmt = $conexao->prepare($sql);
 
-    $sql = "SELECT id FROM representante where status in (1,2)";
+    $stmt->execute();
 
-    $sql = $pdo->prepare($sql);
-    $sql->execute();
-
-    IF($sql->rowCount() > 0){
-        $array = $sql->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    return $array;
-
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 

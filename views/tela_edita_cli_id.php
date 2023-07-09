@@ -35,7 +35,7 @@
   $idrep = $rep['id'];
   $nomerep = $rep['name'];
 
-  //$lista = lista_representante();
+  $lista = lista_representante();
   //print_r($lista);die();
   //$idrep = $lista['id'];
   //$nomerep = $lista['name'];
@@ -110,12 +110,11 @@
         <select id="rep" name="rep" required>
           <option value="<?php echo $idrep?>"><?php echo '('.$idrep.') '.$nomerep; ?></option>
           <?php
-          //esta parte nao esta funcionando
-          $lista = lista_representante();
-          
-          foreach ($lista as $key => $value) {
+          foreach ($lista as $value) {
+           $id = $value['id'];
+           $nome = $value['name'];
 
-           echo "<option value=\"$key\" >$value</option>";
+           echo "<option value=\"$id\" >({$id} ) {$nome}</option>";
           }
           ?>
         </select>
