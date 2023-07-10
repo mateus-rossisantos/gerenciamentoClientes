@@ -22,7 +22,7 @@
                 <input type="password" id="password" placeholder="Digite a senha" name="password" required minlength="5">
                 <input type="password" id="password-confirm" placeholder="Confirme a senha" name="password" required minlength="5">
                 <br>
-                <input type="submit" value="Cadastrar">
+                <input type="submit" value="Cadastrar" class="btn btn-success">
             </form>
         </div>
         </div>

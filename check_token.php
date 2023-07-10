@@ -14,7 +14,7 @@ if ($codigo === $user['token']) {
     $resposta = "Success";
 
 } else {
-    $resposta = "Error";
+    $resposta = "Código incorreto!";
 }
         
 $response = json_encode($resposta);

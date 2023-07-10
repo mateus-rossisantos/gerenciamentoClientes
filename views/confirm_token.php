@@ -32,68 +32,71 @@ if (isset($representante)) {
     $number = preg_replace('/\D/', '', $user_phone);
  
     //-------------------------------- envio de sms com a API Infobip
-    // $client = new Client([
-    //     'base_uri' => "https://ej6vm3.api.infobip.com/",
-    //     'headers' => [
-    //         'Authorization' => "App 30b38a167c05c2ea5a8864c0cb140b05-d31a9f11-1e25-4d9c-80cf-e43be6a8a46e",
-    //         'Content-Type' => 'application/json',
-    //         'Accept' => 'application/json',
-    //     ]
-    // ]);
+    $client = new Client([
+        'base_uri' => "https://ej6vm3.api.infobip.com/",
+        'headers' => [
+            'Authorization' => "App 30b38a167c05c2ea5a8864c0cb140b05-d31a9f11-1e25-4d9c-80cf-e43be6a8a46e",
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ]
+    ]);
 
-    // $response = $client->request(
-    //     'POST',
-    //     'sms/2/text/advanced',
-    //     [
-    //         RequestOptions::JSON => [
-    //             'messages' => [
-    //                 [
-    //                     'from' => 'InfoSMS',
-    //                     'destinations' => [
-    //                         ['to' => "55$number"]
-    //                     ],
-    //                     'text' => "Este é o seu código de verificação: $token",
-    //                 ]
-    //             ]
-    //         ],
-    //     ]
-    // );
-    // // var_dump($response->getBody()->getContents());exit();
+    $response = $client->request(
+        'POST',
+        'sms/2/text/advanced',
+        [
+            RequestOptions::JSON => [
+                'messages' => [
+                    [
+                        'from' => 'InfoSMS',
+                        'destinations' => [
+                            ['to' => "55$number"]
+                        ],
+                        'text' => "Este é o seu código de verificação: $token",
+                    ]
+                ]
+            ],
+        ]
+    );
+    // var_dump($response->getBody()->getContents());exit();
 
-    // if ($response->getStatusCode() == 200) {
+    if ($response->getStatusCode() == 200) {
 
-    //     if (!check_if_table_exist()) {
-    //         create_table_token();
-    //     }
+        if (!check_if_table_exist()) {
+            create_table_token();
+        }
 
-    //     $has_tokent = get_token_by_id($_SESSION['user_id']);
-    //     if ($has_tokent) {
-    //         delete_token($_SESSION['user_id']);
-    //     }
+        $has_tokent = get_token_by_id($_SESSION['user_id']);
+        if ($has_tokent) {
+            delete_token($_SESSION['user_id']);
+        }
 
-    //     insert_token($representante['id'], $user_phone, $token);
+        insert_token($representante['id'], $user_phone, $token);
 
         ?>
             <div class="principal">
-            <div class="container">
-                <a href="../index.php">início</a>
-                <h2>Insira o código</h2>
-                <div id="temporizador">3:00</div>
-                <input type="text" name="token" id="token" class="campo-invisivel" data-id="<?=$representante['id']?>" required>
-                <input type="submit" value="Enviar" id="enviar-btn">
-                <div id="resultado" class="alert alert-success" role="alert">
-            </div>
+                <div class="container">
+                    <a href="../index.php">início</a>
+                    <h2>Insira o código</h2>
+                    <div id="temporizador">3:00</div>
+                    <div id="resultado" class="alert alert-success" role="alert" style="display: none;"></div>
+                    <div id="msm-warning" class="alert alert-danger" role="alert" style="display: none;"></div>
+                    <input type="text" name="token" id="token" class="campo-invisivel" data-id="<?=$representante['id']?>" required>
+                    <div id="send-token">
+                        <input type="submit" value="Enviar" id="enviar-btn" class="btn btn-success">
+                    </div>
+                </div>
             </div>
             <script src="../assets/js/cadastro_representante.js"></script>
             <script src="../assets/js/temporizador.js"></script>
             
         <?php
-    // } else {
-    //     session_unset();
-    //     session_destroy();
-    //     $erro = urlencode('Ocorreu um erro no seu processamento. Entre em contato com o administrador do site');
-    //     header('Location: tela_recupera_senha.php?erro=' . $erro);
-    // }
+    } else {
+        session_unset();
+        session_destroy();
+        $erro = urlencode('Ocorreu um erro no seu processamento. Entre em contato com o administrador do site');
+        header('Location: tela_recupera_senha.php?erro=' . $erro);
+    }
     //--------------------------------
 
 } else {

@@ -41,16 +41,14 @@ body {
 
 .container input[type="submit"] {
   width: 100%;
+}
+
+#temporizador {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: blue;
+  font-family: system-ui;
+  font-size: 30px;
   padding: 10px;
-  border: none;
-  border-radius: 3px;
-  background-color: #4CAF50;
-  color: white;
-  cursor: pointer;
 }
-
-.container input[type="submit"]:hover {
-  background-color: #45a049;
-}
-
-

@@ -1,8 +1,16 @@
 window.onload = function() {
-    let tempoRestante = 1 * 60; // 3 minutos em segundos
+    let tempoRestante = 3 * 60; // 3 minutos em segundos
     let temporizadorElement = document.getElementById('temporizador');
     const fieldToken = document.getElementById('token');
     const enviarBtn = document.getElementById('enviar-btn');
+
+    let spanMessage = document.getElementById('resultado');
+    let warningMessage = document.getElementById('msm-warning');
+        spanMessage.style.display = ''
+        spanMessage.textContent = 'O código foi enviado ao celular informado.'
+        setTimeout(() => {
+            spanMessage.style.display = "none";
+        }, "3000")
   
     function atualizarTemporizador() {
         if (tempoRestante > 0) {
@@ -14,7 +22,13 @@ window.onload = function() {
         } else {
             fieldToken.disabled = true;
             enviarBtn.disabled = true;
-            // alert('Tempo esgotado!');
+            temporizadorElement.style.display = 'none';
+            warningMessage.textContent = 'Código expirado!';
+            warningMessage.style.display = '';
+            setTimeout(() => {
+                warningMessage.style.display = 'none';
+            }, "3000")
+
         }
     }
   
@@ -34,6 +48,7 @@ $(document).ready(function() {
     function verificarCodigo(codigo) {
         const user = document.getElementById('token');
         const id = user.dataset.id;
+
         $.ajax({
             url: "../check_token.php",
             type: "POST",
@@ -43,12 +58,9 @@ $(document).ready(function() {
             },
             
             success: function(response) {
-                let res = JSON.parse(response) 
-                console.log(res.textContent);
-                $("#resultado").html(res);
+                let res = JSON.parse(response)
+                $("#resultado").html('res');
                 if (res == 'Success') {
-
-
                     $.ajax({
                         url: "../check_token1.php",
                         type: "POST",
@@ -58,17 +70,20 @@ $(document).ready(function() {
                         },
                         dataType: 'json',
                         success: function(response) {
-                            console.log(response);
+                            
                             if (response.status === 'success') {
                                 window.location.href = response.redirectUrl;
-                            } else if (response.status === 'error') {
-                                // Trate o erro de acordo com sua necessidade
-                                console.log('Erro:', response.errorMessage);
-                            }
+                            } 
                         }
                     });
 
-
+                } else{
+                    let warningMessage = document.getElementById('msm-warning');
+                    warningMessage.style.display = '';
+                    $("#msm-warning").html(res);
+                    setTimeout(() => {
+                        warningMessage.style.display = 'none';
+                    }, "2000")
                 }
                 
                 
