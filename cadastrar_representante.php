@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['username'];
     $address = $_POST['endereco'];
     $fone = $_POST['telefone'];
+    // $fone = preg_replace('/\D/', '', $_POST['telefone']);
     $email = $_POST['email'];
     $document = $_POST['campoDocumento'];
     $state = $_POST['uf'];

@@ -15,6 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    } else {
       echo "<script language='javascript' type='text/javascript'>
       alert('CPF não encontrado!');window.location
-      .href='views/tela_recupera_senha.html';</script>";
+      .href='views/tela_recupera_senha.php';</script>";
    }
 }
