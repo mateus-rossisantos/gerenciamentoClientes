@@ -24,7 +24,8 @@
     ?>
         <div class="user-links">
             <div id="links">
-                <a href="#" class="mr-2">Meu perfil</a>
+               
+                <a href="tela_edita_perfil.php?userid=<?=$representante_id=$_SESSION['representante_id']?>" class="mr-2">Meu perfil</a>
                 <a class="mr-2">|</a>
                 <a href="../logout.php">Sair</a>
             </div>
