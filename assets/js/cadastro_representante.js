@@ -265,3 +265,5 @@ function calc_digitos_posicoes( digitos, posicoes = 10, soma_digitos = 0 ) {
     return cpf;
     
 } // calc_digitos_posicoes
+
+
