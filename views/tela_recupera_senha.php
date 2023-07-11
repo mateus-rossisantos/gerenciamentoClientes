@@ -13,25 +13,15 @@
     <div class="container">
       <a href="../index.php">Voltar</a>
       <h2>Recuperar Senha</h2>
-      <?php
-        // Verifica se o parâmetro 'erro' foi enviado na url
-        if(isset($_GET['erro'])) {
-            $mensagemErro = urldecode($_GET['erro']);
-            ?>
-            <div class="alert alert-warning" role="alert">
-              <?=$mensagemErro?>
-            </div>
-            <?php
-        }
-        ?>
-
       <form method="post" action="confirm_token.php">
         <span>Insira seu telefone para receber um código de verificação</span><br><br>
+        <div id="warning-alert" class="alert alert-warning" role="alert" style="display: none;"></div>
         <input type="text" id="telefone" name="telefone" required placeholder='Insira o número de telefone com DDD'>
         <input type="submit" class="btn btn-success" value="Enviar">
     </form>
   </div>
 </div>
 <script src="../assets/js/cadastro_representante.js"></script>
+<script src="../assets/js/validateError.js"></script>
 </body>
 </html>

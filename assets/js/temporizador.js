@@ -3,6 +3,7 @@ window.onload = function() {
     let temporizadorElement = document.getElementById('temporizador');
     const fieldToken = document.getElementById('token');
     const enviarBtn = document.getElementById('enviar-btn');
+    let title = document.getElementById('title');
 
     let spanMessage = document.getElementById('resultado');
     let warningMessage = document.getElementById('msm-warning');
@@ -22,6 +23,7 @@ window.onload = function() {
         } else {
             fieldToken.disabled = true;
             enviarBtn.disabled = true;
+            title.textContent = 'Retorne ao menu anterior';
             temporizadorElement.style.display = 'none';
             warningMessage.textContent = 'Código expirado!';
             warningMessage.style.display = '';

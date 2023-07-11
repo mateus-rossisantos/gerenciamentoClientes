@@ -20,13 +20,12 @@ require_once '../dao/tokenDao.php';
 require_once '../generate_token.php';
 require_once '../vendor/autoload.php';
 
-session_start();
-
 $form = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 $user_phone = $form['telefone'];
 $representante = busca_representante_por_telefone($user_phone);
 
 if (isset($representante)) {
+    session_start();
     
     $token = generate_token();
     $number = preg_replace('/\D/', '', $user_phone);
@@ -52,7 +51,7 @@ if (isset($representante)) {
                         'destinations' => [
                             ['to' => "55$number"]
                         ],
-                        'text' => "Este é o seu código de verificação: $token",
+                        'text' => "GERENCIAMENTO DE CLIENTES: Este é o seu código de verificação: $token",
                     ]
                 ]
             ],
@@ -77,7 +76,7 @@ if (isset($representante)) {
             <div class="principal">
                 <div class="container">
                     <a href="../index.php">início</a>
-                    <h2>Insira o código</h2>
+                    <h2 id="title">Insira o código</h2>
                     <div id="temporizador">3:00</div>
                     <div id="resultado" class="alert alert-success" role="alert" style="display: none;"></div>
                     <div id="msm-warning" class="alert alert-danger" role="alert" style="display: none;"></div>
@@ -100,8 +99,6 @@ if (isset($representante)) {
     //--------------------------------
 
 } else {
-    session_unset();
-    session_destroy();
     $erro = urlencode('Telefone inválido');
     header('Location: tela_recupera_senha.php?erro=' . $erro);
 }
