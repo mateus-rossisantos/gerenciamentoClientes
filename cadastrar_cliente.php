@@ -60,7 +60,7 @@ function validarEmail($email)
 
     $result = json_decode($response);
 
-    if ($result->format_valid && $result->smtp_check) {
+    if ($result->format_valid) {
         echo true;
     } else {
         echo false;
