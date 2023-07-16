@@ -12,6 +12,8 @@
 <?php
 if (isset($_GET['userid'])) {
   $representante = $_GET['userid'];
+  session_start();
+  $_SESSION['userid'] = $representante;
 }
       include '../dao/representanteDao.php';
       $rep= busca_representante_por_id($representante);

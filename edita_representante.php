@@ -1,6 +1,7 @@
 <?php
 include_once './dao/representanteDao.php';
-$doc = 1;
+session_start();
+$doc = $_SESSION['userid'];
 $nome = $_POST['username'];
 $endereco = $_POST['endereco'];
 $telefone = $_POST['telefone'];
