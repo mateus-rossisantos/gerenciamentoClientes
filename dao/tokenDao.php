@@ -118,7 +118,6 @@ function check_if_table_exist() {
 
 function delete_token($user_id)
 {
-
     try {
         $conexao = cria_Conexao();
 

@@ -29,7 +29,17 @@ if (isset($representante)) {
     
     $token = generate_token();
     $number = preg_replace('/\D/', '', $user_phone);
- 
+
+    if (!check_if_table_exist()) {
+        create_table_token();
+    }
+
+    $has_tokent = get_token_by_id($representante['id']);
+    
+    if ($has_tokent) {
+        delete_token($representante['id']);
+    }
+
     //-------------------------------- envio de sms com a API Infobip
     $client = new Client([
         'base_uri' => "https://ej6vm3.api.infobip.com/",
@@ -60,15 +70,6 @@ if (isset($representante)) {
     // var_dump($response->getBody()->getContents());exit();
 
     if ($response->getStatusCode() == 200) {
-
-        if (!check_if_table_exist()) {
-            create_table_token();
-        }
-
-        $has_tokent = get_token_by_id($_SESSION['user_id']);
-        if ($has_tokent) {
-            delete_token($_SESSION['user_id']);
-        }
 
         insert_token($representante['id'], $user_phone, $token);
 
